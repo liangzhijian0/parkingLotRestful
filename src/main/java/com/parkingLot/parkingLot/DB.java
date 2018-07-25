@@ -1,16 +1,21 @@
 package com.parkingLot.parkingLot;
 
+import com.parkingLot.parkingLot.domin.Car;
 import com.parkingLot.parkingLot.domin.ParkingBoy;
 import com.parkingLot.parkingLot.domin.ParkingLot;
+import com.parkingLot.parkingLot.domin.Receipt;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class DB {
     private static Map<Integer,ParkingLot> parkingLotsList = new LinkedHashMap<>();
-    private static int parkingLotId = 1;
     private static Map<Integer,ParkingBoy> parkingBoysList = new LinkedHashMap<>();
+    private static Map<String,Receipt> receiptsList = new LinkedHashMap<>();
+
+    private static int parkingLotId = 1;
     private static int parkingBoyId = 1;
 
     public static Map<Integer, ParkingLot> getParkingLotsList() {
@@ -53,5 +58,12 @@ public class DB {
         list.add(request);
         parkingBoy.setParkingLotsList(list);
         return parkingBoy;
+    }
+
+    public static Receipt park(Car request){
+        String id = UUID.randomUUID().toString();
+        Receipt receipt = new Receipt(id,false);
+        receiptsList.put(id,receipt);
+        return receipt;
     }
 }
