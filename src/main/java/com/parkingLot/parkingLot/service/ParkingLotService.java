@@ -15,4 +15,8 @@ public class ParkingLotService {
     public ParkingLot addParkingLot(ParkingLot request) {
         return  DB.addParkingLot(request);
     }
+
+    public ParkingLot deleteParkingLot(int id) {
+        return DB.deleteParkingLot(id);
+    }
 }

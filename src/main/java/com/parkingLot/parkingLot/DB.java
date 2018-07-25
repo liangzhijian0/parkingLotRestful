@@ -38,8 +38,8 @@ public class DB {
 
     public static ParkingLot addParkingLot(ParkingLot request) {
         request.setId(parkingLotId);
-        parkingLotId ++;
         parkingLotsList.put(parkingLotId,request);
+        parkingLotId ++;
         return request;
     }
 
@@ -98,5 +98,12 @@ public class DB {
     public static Order robOrder(int orderId) {
         ordersList.get(orderId).setStatus(false);
         return ordersList.get(orderId);
+    }
+
+    public static ParkingLot deleteParkingLot(int id) {
+        int a = parkingLotsList.size();
+        ParkingLot resultParkingLot = parkingLotsList.get(id);
+        parkingLotsList.remove(id);
+        return resultParkingLot;
     }
 }
