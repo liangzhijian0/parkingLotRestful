@@ -1,11 +1,12 @@
 package com.parkingLot.parkingLot.domin;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class ParkingBoy {
     private int id;
     private String name;
-    private List<ParkingLot> parkingLotsList;
+    private List<ParkingLot> parkingLotsList = new LinkedList<>();
 
     public ParkingBoy() {
     }

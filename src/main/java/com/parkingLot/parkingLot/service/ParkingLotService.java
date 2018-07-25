@@ -1,5 +1,6 @@
 package com.parkingLot.parkingLot.service;
 
+import com.parkingLot.parkingLot.DB;
 import com.parkingLot.parkingLot.domin.ParkingLot;
 import org.springframework.stereotype.Component;
 
@@ -11,13 +12,7 @@ import java.util.Map;
 @Component
 public class ParkingLotService {
 
-    public Map<Integer,ParkingLot> parkingLotsList = new LinkedHashMap<>();
-    int parkingLotId = 1;
-
     public ParkingLot addParkingLot(ParkingLot request) {
-        request.setId(parkingLotId);
-        parkingLotId ++;
-        parkingLotsList.put(parkingLotId,request);
-        return request;
+        return  DB.addParkingLot(request);
     }
 }
