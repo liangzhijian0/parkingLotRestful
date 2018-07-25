@@ -94,4 +94,9 @@ public class DB {
         List<Order> orders = new LinkedList<>(ordersList.values());
         return orders.stream().filter(order -> order.isStatus() == OrderStatus).collect(Collectors.toList());
     }
+
+    public static Order robOrder(int orderId) {
+        ordersList.get(orderId).setStatus(false);
+        return ordersList.get(orderId);
+    }
 }

@@ -18,4 +18,8 @@ public class OrderService {
     public List<Order> getOrderByStatus(boolean OrderStatus) {
         return DB.getOrderByStatus(OrderStatus);
     }
+
+    public Order robOrder(int orderId) {
+        return DB.robOrder(orderId);
+    }
 }
