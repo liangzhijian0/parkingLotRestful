@@ -15,7 +15,7 @@ public class ParkingLotController {
     @Autowired
     ParkingLotService parkingLotService;
 
-    @PostMapping(path = "ParkingLots")
+    @PostMapping("/ParkingLots")
     public Map<String ,Object> addParkingLot(@RequestBody ParkingLot request) {
         Map<String ,Object> response = new LinkedHashMap<>();
         ParkingLot parkingLot =  parkingLotService.addParkingLot(request);
