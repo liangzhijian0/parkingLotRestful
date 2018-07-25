@@ -8,15 +8,16 @@ import com.parkingLot.parkingLot.domin.Receipt;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 public class DB {
     private static Map<Integer,ParkingLot> parkingLotsList = new LinkedHashMap<>();
     private static Map<Integer,ParkingBoy> parkingBoysList = new LinkedHashMap<>();
-    private static Map<String,Receipt> receiptsList = new LinkedHashMap<>();
+    private static Map<Integer,Receipt> receiptsList = new LinkedHashMap<>();
+    private static Map<Receipt,Car> receiptCar = new LinkedHashMap<>();
 
     private static int parkingLotId = 1;
     private static int parkingBoyId = 1;
+    private static int receiptId = 1;
 
     public static Map<Integer, ParkingLot> getParkingLotsList() {
         return parkingLotsList;
@@ -60,10 +61,24 @@ public class DB {
         return parkingBoy;
     }
 
-    public static Receipt park(Car request){
-        String id = UUID.randomUUID().toString();
-        Receipt receipt = new Receipt(id,false);
-        receiptsList.put(id,receipt);
+    public static Receipt park(Car car){
+        Receipt receipt = new Receipt(receiptId,true);
+        receiptsList.put(receiptId,receipt);
+        receiptCar.put(receipt,car);
+        receiptId ++ ;
         return receipt;
+    }
+
+    public static Car unpark(int receiptsId) {
+        int a = receiptCar.size();
+        for(Receipt key : receiptCar.keySet()){
+            if(key.getId() == receiptsId){
+                Car resultCar = receiptCar.get(key);
+                receiptCar.remove(key);
+                receiptsList.get(receiptsId).setStatus(false);
+                return resultCar;
+            }
+        }
+        return null;
     }
 }

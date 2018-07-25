@@ -1,10 +1,10 @@
 package com.parkingLot.parkingLot.domin;
 
 public class Receipt {
-    private String  id;
+    private int id;
     private boolean status;
 
-    public Receipt(String id, boolean status) {
+    public Receipt(int id, boolean status) {
         this.id = id;
         this.status = status;
     }
@@ -17,12 +17,15 @@ public class Receipt {
         this.status = status;
     }
 
+    public Receipt(int id) {
+        this.id = id;
+    }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 }

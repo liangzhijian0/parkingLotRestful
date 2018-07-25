@@ -13,7 +13,8 @@ public class ReceiptService {
         return DB.park(request);
     }
 
-    public ParkingLot addParkingLot(ParkingLot request) {
-        return  DB.addParkingLot(request);
+
+    public Car unpark(int receiptsId) {
+        return DB.unpark(receiptsId);
     }
 }
