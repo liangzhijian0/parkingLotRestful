@@ -101,9 +101,14 @@ public class DB {
     }
 
     public static ParkingLot deleteParkingLot(int id) {
-        int a = parkingLotsList.size();
         ParkingLot resultParkingLot = parkingLotsList.get(id);
         parkingLotsList.remove(id);
         return resultParkingLot;
+    }
+
+    public static ParkingBoy deleteParkingBoy(int id) {
+        ParkingBoy resultParkingBoy = parkingBoysList.get(id);
+        parkingBoysList.remove(id);
+        return resultParkingBoy;
     }
 }

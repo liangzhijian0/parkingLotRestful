@@ -5,10 +5,7 @@ import com.parkingLot.parkingLot.domin.ParkingLot;
 import com.parkingLot.parkingLot.service.ParkingBoyService;
 import com.parkingLot.parkingLot.service.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -37,6 +34,19 @@ public class ParkingBoyController {
         ParkingBoy parkingBoy =  parkingBoyService.manageParkingLotToParkingBoy(ParkingBoysId,request);
         if(parkingBoy != null){
             response.put("status","put parkingLots to parkingBoy successfully");
+            response.put("parkingBoy",parkingBoy);
+        }else{
+            response.put("status","fail");
+        }
+        return response;
+    }
+
+    @DeleteMapping("/ParkingBoys/{id}")
+    public Map<String ,Object> deleteParkingBoy(@PathVariable int id){
+        Map<String ,Object> response = new LinkedHashMap<>();
+        ParkingBoy parkingBoy =  parkingBoyService.deleteParkingBoy(id);
+        if(parkingBoy != null){
+            response.put("status","delete parkingBoy successfully");
             response.put("parkingBoy",parkingBoy);
         }else{
             response.put("status","fail");

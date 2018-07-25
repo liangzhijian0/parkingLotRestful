@@ -20,4 +20,8 @@ public class ParkingBoyService {
     public ParkingBoy manageParkingLotToParkingBoy(int ParkingBoysId,ParkingLot request) {
         return DB.manageParkingLotToParkingBoy(ParkingBoysId,request);
     }
+
+    public ParkingBoy deleteParkingBoy(int id) {
+        return DB.deleteParkingBoy(id);
+    }
 }
