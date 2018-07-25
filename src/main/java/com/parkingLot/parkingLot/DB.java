@@ -1,11 +1,9 @@
 package com.parkingLot.parkingLot;
 
-import com.parkingLot.parkingLot.domin.Car;
-import com.parkingLot.parkingLot.domin.ParkingBoy;
-import com.parkingLot.parkingLot.domin.ParkingLot;
-import com.parkingLot.parkingLot.domin.Receipt;
+import com.parkingLot.parkingLot.domin.*;
 
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,10 +12,12 @@ public class DB {
     private static Map<Integer,ParkingBoy> parkingBoysList = new LinkedHashMap<>();
     private static Map<Integer,Receipt> receiptsList = new LinkedHashMap<>();
     private static Map<Receipt,Car> receiptCar = new LinkedHashMap<>();
+    private static Map<Integer,Order> ordersList = new LinkedHashMap<>();
 
     private static int parkingLotId = 1;
     private static int parkingBoyId = 1;
     private static int receiptId = 1;
+    private static int orderId = 1;
 
     public static Map<Integer, ParkingLot> getParkingLotsList() {
         return parkingLotsList;
@@ -66,11 +66,14 @@ public class DB {
         receiptsList.put(receiptId,receipt);
         receiptCar.put(receipt,car);
         receiptId ++ ;
+
+        Order order = new Order(orderId,true);
+        ordersList.put(orderId,order);
+        orderId ++ ;
         return receipt;
     }
 
     public static Car unpark(int receiptsId) {
-        int a = receiptCar.size();
         for(Receipt key : receiptCar.keySet()){
             if(key.getId() == receiptsId){
                 Car resultCar = receiptCar.get(key);
@@ -80,5 +83,9 @@ public class DB {
             }
         }
         return null;
+    }
+
+    public static List<Order> getAllOrder() {
+        return new LinkedList<>(ordersList.values());
     }
 }
