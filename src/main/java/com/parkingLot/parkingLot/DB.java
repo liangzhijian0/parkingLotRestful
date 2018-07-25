@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class DB {
     private static Map<Integer,ParkingLot> parkingLotsList = new LinkedHashMap<>();
@@ -87,5 +88,10 @@ public class DB {
 
     public static List<Order> getAllOrder() {
         return new LinkedList<>(ordersList.values());
+    }
+
+    public static List<Order> getOrderByStatus(boolean OrderStatus) {
+        List<Order> orders = new LinkedList<>(ordersList.values());
+        return orders.stream().filter(order -> order.isStatus() == OrderStatus).collect(Collectors.toList());
     }
 }

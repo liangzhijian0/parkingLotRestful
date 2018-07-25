@@ -21,17 +21,9 @@ public class OrderController {
     public List<Order> getAllOrder(){
         return orderService.getAllOrder();
     }
-
-//    @GetMapping("/Orders/{status}")
-//    public Map<String ,Object> getCompanyById(@PathVariable long id){
-//        Map<String ,Object> response = new LinkedHashMap<>();
-//        Company company =  companyService.getCompanyById(id);
-//        if(company != null){
-//            response.put("status","successful");
-//            response.put("employee",company);
-//        }else{
-//            response.put("status","fail");
-//        }
-//        return response;
-//    }
+    
+    @GetMapping("/Orders/{OrderStatus}")
+    public List<Order> getOrderByStatus(@PathVariable boolean OrderStatus){
+        return orderService.getOrderByStatus(OrderStatus);
+    }
 }

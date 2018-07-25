@@ -14,4 +14,8 @@ public class OrderService {
     public List<Order> getAllOrder() {
         return DB.getAllOrder();
     }
+
+    public List<Order> getOrderByStatus(boolean OrderStatus) {
+        return DB.getOrderByStatus(OrderStatus);
+    }
 }
